@@ -58,6 +58,9 @@ export const size = {
   backButton: 40,
   tabBar: 64,
   addButton: 52,
+  icon: 24,
+  iconSm: 16,
+  bar: 8,
 } as const;
 
 // Named layout spacing from DESIGN_SYSTEM.md §4 → Layout.

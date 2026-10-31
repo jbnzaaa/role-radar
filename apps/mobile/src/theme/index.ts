@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useMemo } from "react";
 
 import { color, layout, motion, radius, shadow, size, space } from "./tokens";
 import { text } from "./typography";
@@ -23,6 +23,15 @@ export const ThemeProvider = ThemeContext.Provider;
 
 export function useTheme(): Theme {
   return useContext(ThemeContext);
+}
+
+/**
+ * Build a StyleSheet from the theme. Define `factory` at module scope so it stays stable:
+ * `const makeStyles = (t: Theme) => StyleSheet.create({ ... });`
+ */
+export function useThemedStyles<T>(factory: (theme: Theme) => T): T {
+  const theme = useTheme();
+  return useMemo(() => factory(theme), [factory, theme]);
 }
 
 export { displayMaxFontSizeMultiplier, fontAssets, fontFamily } from "./typography";
