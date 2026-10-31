@@ -56,6 +56,8 @@ Components use `useTheme()` (from `@/theme`) → `{ color, space, radius, size, 
 | `neutral.700` | #3F3F46 | | | |
 | `neutral.900` | #18181B | | | |
 
+**Brand (not themeable):** `brand.googleBlue` #4285F4, `googleGreen` #34A853, `googleYellow` #FBBC05, `googleRed` #EA4335 (the "G" mark); `googleFill` #FFFFFF, `googleStroke` #747775, `googleText` #1F1F1F (sign-in button, light style). Used only by `GoogleSignInButton`.
+
 ### 2.2 Semantic
 | Token | Light | Use |
 |---|---|---|
@@ -82,7 +84,7 @@ Components use `useTheme()` (from `@/theme`) → `{ color, space, radius, size, 
 
 ## 3. Typography
 
-Font: **Inter** for body and display, loaded with `expo-font` via `@expo-google-fonts/inter`. Numbers use `fontVariant: ['tabular-nums']`.
+Font: **Inter** for body and display, loaded with `expo-font` via `@expo-google-fonts/inter`. Only exception: the Google sign-in button label uses **Roboto Medium** 14/20 (`text.googleButton`), as Google's branding guidelines require. Numbers use `fontVariant: ['tabular-nums']`.
 
 | Token | Size / line height | Weight | Use (as in the reference) |
 |---|---|---|---|
@@ -109,7 +111,7 @@ Font: **Inter** for body and display, loaded with `expo-font` via `@expo-google-
 **Radius:** `sm` 8 · `md` 12 · `lg` 20 (cards) · `full` (buttons, chips, back button, tab pill)
 **Elevation:** cards flat on `bgPage`. Tab bar and sheets use `shadow.raised`: iOS `shadowColor` neutral.900, `shadowOpacity` 0.08, `shadowRadius` 12, `shadowOffset` 0 / −2; Android `elevation: 8`.
 
-**Tokens for the layout values below:** `layout.screenPadding` (20), `layout.cardGap` (8), `layout.cardPadding` (16), `layout.titleBlockGap` (24); `size.minTarget` (44), `size.buttonLg` (52), `size.buttonMd` (44), `size.backButton` (40), `size.tabBar` (64), `size.addButton` (52); `size.icon` (24, Lucide default), `size.iconSm` (16, inline/chips), `size.bar` (8, ScoreBar/StackedBar height), `size.gaugeLg` (220), `size.gaugeMd` (160), `size.textAreaMin` (160), `size.textAreaMax` (320, scrolls inside), `size.avatarSm` (40), `size.avatarLg` (64); `opacity.band` (0.3, Gauge bands), `opacity.backdrop` (0.4, behind sheets), `opacity.dotIdle` (0.25, resting loader dots).
+**Tokens for the layout values below:** `layout.screenPadding` (20), `layout.cardGap` (8), `layout.cardPadding` (16), `layout.titleBlockGap` (24); `size.minTarget` (44), `size.buttonLg` (52), `size.buttonMd` (44), `size.backButton` (40), `size.tabBar` (64), `size.addButton` (52); `size.icon` (24, Lucide default), `size.iconSm` (16, inline/chips), `size.bar` (8, ScoreBar/StackedBar height), `size.gaugeLg` (220), `size.gaugeMd` (160), `size.textAreaMin` (160), `size.textAreaMax` (320, scrolls inside), `size.avatarSm` (40), `size.avatarLg` (64), `size.googleLogo` (20); `opacity.band` (0.3, Gauge bands), `opacity.backdrop` (0.4, behind sheets), `opacity.dotIdle` (0.25, resting loader dots).
 
 **Layout**
 | Element | Value |

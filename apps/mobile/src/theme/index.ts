@@ -1,10 +1,11 @@
 import { createContext, useContext, useMemo } from "react";
 
-import { color, layout, motion, opacity, radius, shadow, size, space } from "./tokens";
+import { brand, color, layout, motion, opacity, radius, shadow, size, space } from "./tokens";
 import { text } from "./typography";
 
 export type Theme = {
   color: Record<keyof typeof color, string>;
+  brand: typeof brand;
   space: typeof space;
   radius: typeof radius;
   size: typeof size;
@@ -17,6 +18,7 @@ export type Theme = {
 
 export const lightTheme: Theme = {
   color,
+  brand,
   space,
   radius,
   size,

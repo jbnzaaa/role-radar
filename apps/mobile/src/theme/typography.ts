@@ -5,6 +5,8 @@ import { Inter_400Regular } from "@expo-google-fonts/inter/400Regular";
 import { Inter_500Medium } from "@expo-google-fonts/inter/500Medium";
 import { Inter_600SemiBold } from "@expo-google-fonts/inter/600SemiBold";
 import { Inter_700Bold } from "@expo-google-fonts/inter/700Bold";
+// Google sign-in button label must use Roboto Medium (Google branding guidelines).
+import { Roboto_500Medium } from "@expo-google-fonts/roboto/500Medium";
 import type { TextStyle } from "react-native";
 
 /** Pass to `useFonts` in the root layout. */
@@ -13,6 +15,7 @@ export const fontAssets = {
   Inter_500Medium,
   Inter_600SemiBold,
   Inter_700Bold,
+  Roboto_500Medium,
 };
 
 export const fontFamily = {
@@ -20,6 +23,7 @@ export const fontFamily = {
   medium: "Inter_500Medium",
   semibold: "Inter_600SemiBold",
   bold: "Inter_700Bold",
+  googleButton: "Roboto_500Medium",
 } as const;
 
 /** Only display text and big score numbers cap Dynamic Type (DESIGN_SYSTEM.md §3). */
@@ -52,4 +56,6 @@ export const text = {
   small: { fontFamily: fontFamily.regular, fontSize: 13, lineHeight: 18 },
   caption: { fontFamily: fontFamily.medium, fontSize: 12, lineHeight: 16 },
   input: { fontFamily: fontFamily.regular, fontSize: 16, lineHeight: 22 },
+  /** Google branding spec for the sign-in button label. */
+  googleButton: { fontFamily: fontFamily.googleButton, fontSize: 14, lineHeight: 20 },
 } as const satisfies Record<string, TextStyle>;

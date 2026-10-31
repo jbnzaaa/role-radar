@@ -46,6 +46,20 @@ export const color = {
   verdictLowBg: p.red[50],
 } as const;
 
+/**
+ * Third-party brand colours, used only where that brand requires them (not themeable).
+ * Google sign-in button, light style: https://developers.google.com/identity/branding-guidelines
+ */
+export const brand = {
+  googleBlue: "#4285F4",
+  googleGreen: "#34A853",
+  googleYellow: "#FBBC05",
+  googleRed: "#EA4335",
+  googleFill: "#FFFFFF",
+  googleStroke: "#747775",
+  googleText: "#1F1F1F",
+} as const;
+
 export const space = { 1: 4, 2: 8, 3: 12, 4: 16, 5: 20, 6: 24, 8: 32, 10: 40, 12: 48 } as const;
 
 export const radius = { sm: 8, md: 12, lg: 20, full: 999 } as const;
@@ -67,6 +81,8 @@ export const size = {
   textAreaMax: 320,
   avatarSm: 40,
   avatarLg: 64,
+  /** Google "G" mark in the sign-in button. */
+  googleLogo: 20,
 } as const;
 
 export const opacity = {
