@@ -37,7 +37,7 @@ export const space = { 1: 4, 2: 8, 3: 12, 4: 16, 5: 20, 6: 24, 8: 32, 10: 40, 12
 export const radius = { sm: 8, md: 12, lg: 20, full: 999 } as const;
 ```
 
-Components use `useTheme()` → `{ color, space, radius, text }` so dark mode later is a token switch, not a rewrite.
+Components use `useTheme()` (from `@/theme`) → `{ color, space, radius, size, layout, shadow, motion, text }` so dark mode later is a token switch, not a rewrite. `size`, `layout`, `shadow` and `motion` names are listed in §4 and §5.
 
 ---
 
@@ -107,7 +107,9 @@ Font: **Inter** for body and display, loaded with `expo-font` via `@expo-google-
 
 **Spacing (4-unit base):** `space[1]` 4 · `2` 8 · `3` 12 · `4` 16 · `5` 20 · `6` 24 · `8` 32 · `10` 40 · `12` 48
 **Radius:** `sm` 8 · `md` 12 · `lg` 20 (cards) · `full` (buttons, chips, back button, tab pill)
-**Elevation:** cards flat on `bgPage`. Tab bar and sheets: iOS `shadowColor/Opacity/Radius`, Android `elevation: 8` — wrap in one `shadow.raised` token.
+**Elevation:** cards flat on `bgPage`. Tab bar and sheets use `shadow.raised`: iOS `shadowColor` neutral.900, `shadowOpacity` 0.08, `shadowRadius` 12, `shadowOffset` 0 / −2; Android `elevation: 8`.
+
+**Tokens for the layout values below:** `layout.screenPadding` (20), `layout.cardGap` (8), `layout.cardPadding` (16), `layout.titleBlockGap` (24); `size.minTarget` (44), `size.buttonLg` (52), `size.buttonMd` (44), `size.backButton` (40), `size.tabBar` (64), `size.addButton` (52).
 
 **Layout**
 | Element | Value |
@@ -126,11 +128,11 @@ Font: **Inter** for body and display, loaded with `expo-font` via `@expo-google-
 
 ## 5. Motion and feedback
 
-- Durations: fast 120 ms, base 200 ms; native stack transitions (don't customise in MVP).
+- Durations: `motion.fast` 120 ms, `motion.base` 200 ms; native stack transitions (don't customise in MVP).
 - **Analyzing dot matrix:** Reanimated wave (~1.6 s loop); with Reduce Motion → static dots + progress text.
 - Gauge marker animates 0 → score once (skipped with Reduce Motion).
 - Haptics (`expo-haptics`): `selectionAsync` on status change, `notificationAsync(Success)` on save/analysis done.
-- Pressed state on every `Pressable`: opacity 0.7 or a darker surface — never no feedback.
+- Pressed state on every `Pressable`: opacity `motion.pressedOpacity` (0.7) or a darker surface — never no feedback.
 
 ---
 

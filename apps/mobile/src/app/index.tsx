@@ -1,5 +1,5 @@
 import * as Device from "expo-device";
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { AnimatedIcon } from "@/components/animated-icon";
@@ -9,6 +9,7 @@ import { ThemedView } from "@/components/themed-view";
 import { WebBadge } from "@/components/web-badge";
 import { BottomTabInset, MaxContentWidth, Spacing } from "@/constants/theme";
 import { APP_NAME } from "@roleradar/core";
+import { displayMaxFontSizeMultiplier, useTheme } from "@/theme";
 
 function getDevMenuHint() {
   if (Platform.OS === "web") {
@@ -30,14 +31,18 @@ function getDevMenuHint() {
 }
 
 export default function HomeScreen() {
+  const theme = useTheme();
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ThemedView style={styles.heroSection}>
           <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
+          <Text
+            style={[theme.text.display, styles.title, { color: theme.color.textDisplay }]}
+            maxFontSizeMultiplier={displayMaxFontSizeMultiplier}
+          >
             {APP_NAME}
-          </ThemedText>
+          </Text>
         </ThemedView>
 
         <ThemedText type="code" style={styles.code}>
