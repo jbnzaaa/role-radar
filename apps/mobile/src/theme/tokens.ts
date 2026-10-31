@@ -74,6 +74,8 @@ export const opacity = {
   band: 0.3,
   /** Dimmed page behind sheets and dialogs. */
   backdrop: 0.4,
+  /** Resting dots in DotMatrixLoader. */
+  dotIdle: 0.25,
 } as const;
 
 // Named layout spacing from DESIGN_SYSTEM.md §4 → Layout.
@@ -101,4 +103,6 @@ export const motion = {
   fast: 120,
   base: 200,
   pressedOpacity: 0.7,
+  /** One DotMatrixLoader wave (DESIGN_SYSTEM.md §5). */
+  loaderLoop: 1600,
 } as const;
