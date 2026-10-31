@@ -7,8 +7,8 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:api": "npm run dev -w api",
-    "dev:mobile": "npm run start -w mobile",
+    "dev:api": "npm run dev -w api --",
+    "dev:mobile": "npm run start -w mobile --",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "format": "prettier --write .",
