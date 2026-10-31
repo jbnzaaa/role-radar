@@ -1,6 +1,6 @@
 # Screens — RoleRadar (Expo)
 
-Every screen the app needs. The low-fidelity mobile screens of Oct 2026 are a **reference only**: they show the intended content and flow, not the final layout or visuals. Final screens are designed in Figma.
+Every screen the app needs. This doc is the **main layout reference**: screens are built directly in code from it, using DESIGN_SYSTEM.md tokens and components (no Figma). The low-fidelity screens of Oct 2026 only informed it.
 
 For each screen this doc lists what is **required** (route, purpose, content, where each piece of data comes from, states, actions). Section order and layout follow the reference as a starting point and can change freely in the final design, as long as the required content and behaviour stay. **Notes on the reference** point out where the reference differs from the PRD, so the final design doesn't carry those over.
 
@@ -58,7 +58,7 @@ flowchart TD
   - "4 interview scheduled" → we don't store interview dates; use "4 in interviews".
   - The last Recent row ("Label / Score / Verdict / Status") is a template row — remove.
   - Only the active tab has a label — add labels to all tabs (accessibility).
-  - Keep sample data consistent across screens in Figma (e.g. the same job shows 92% on Home but 35% on Match analysis).
+  - Keep sample/seed data consistent across screens (e.g. the same job shows 92% on Home but 35% on Match analysis).
 
 ---
 

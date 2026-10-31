@@ -38,7 +38,7 @@ Why a separate API? The Gemini key must never be inside the app (anyone can extr
 | Layer | Choice | Notes |
 |---|---|---|
 | Mobile framework | **Expo** (latest stable SDK) + React Native, TypeScript strict | Expo Router for navigation |
-| Styling | React Native `StyleSheet` + typed theme tokens (`apps/mobile/src/theme`) | Tokens generated from Figma variables |
+| Styling | React Native `StyleSheet` + typed theme tokens (`apps/mobile/src/theme`) | Token values from DESIGN_SYSTEM.md |
 | Graphics | `react-native-svg` (gauge, bars), `react-native-reanimated` (Analyzing animation), `lucide-react-native` icons | |
 | Sign-in | **Google Sign-In** with `@react-native-google-signin/google-signin` (free "Original" API); the API verifies the Google ID token and only lets in allow-listed emails | Native code → needs a **development build** (not Expo Go) |
 | Device APIs | `expo-document-picker`, `expo-file-system`, `expo-clipboard`, `expo-sqlite`, `expo-secure-store`, `expo-sharing`, `expo-haptics`, `@react-native-community/netinfo` | All work in Expo Go |
@@ -49,7 +49,7 @@ Why a separate API? The Gemini key must never be inside the app (anyone can extr
 | Validation | Zod (in `packages/core`, shared by app and API) | |
 | Builds & updates | EAS Build, EAS Update | Free plan is enough for personal use |
 | Testing | Jest (`jest-expo`) + React Native Testing Library, Vitest for API/core, Maestro for end-to-end | See [TESTING.md](./TESTING.md) |
-| Design | Figma, via Claude × Figma MCP | [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md), [SCREENS.md](./SCREENS.md) |
+| Design | Code-first (no Figma) | [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md), [SCREENS.md](./SCREENS.md) |
 
 ---
 
@@ -62,7 +62,6 @@ Why a separate API? The Gemini key must never be inside the app (anyone can extr
 - Optional: Android Studio (emulator) and, on a Mac, Xcode (iOS simulator)
 - **Gemini API key** from [Google AI Studio](https://aistudio.google.com/) (don't link billing to stay free)
 - **Vercel** account (API hosting)
-- **Figma** + the Figma connector in Claude
 
 ### Costs to know
 | Item | Cost | When you need it |
@@ -150,7 +149,7 @@ Builds:
 | 02 | [PRD.md](./PRD.md) | Requirements, features, MVP boundaries, acceptance criteria |
 | 03 | [CLAUDE.md](./CLAUDE.md) | Rules Claude Code follows |
 | 04 | [ARCHITECTURE.md](./ARCHITECTURE.md) | Monorepo, navigation, storage, API, security, builds |
-| 05 | [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md) | Tokens, components, Figma workflow, accessibility |
+| 05 | [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md) | Tokens, components, design workflow, accessibility |
 | 06 | [SCREENS.md](./SCREENS.md) | Required content, data, states and actions per screen |
 | 07 | [AI_MATCHING.md](./AI_MATCHING.md) | CV parsing, prompt, schema, scoring |
 | 08 | [TASKS.md](./TASKS.md) | Phased plan and progress |

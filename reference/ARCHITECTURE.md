@@ -46,10 +46,10 @@ roleradar/
 │   │   ├── eas.json                   # build profiles (§9)
 │   │   ├── app/                       # Expo Router routes (§3)
 │   │   ├── src/
-│   │   │   ├── components/ui/         # primitives mirroring Figma
+│   │   │   ├── components/ui/         # primitives from DESIGN_SYSTEM.md §6
 │   │   │   ├── components/layout/     # Screen, KeyboardScreen, PageHeader, BottomActionBar, TabBar
 │   │   │   ├── components/features/   # home/, cv/, analyze/, analysis/, history/, top-matches/, profile/
-│   │   │   ├── theme/                 # tokens.ts, typography.ts, index.ts (generated from Figma)
+│   │   │   ├── theme/                 # tokens.ts, typography.ts, index.ts (values from DESIGN_SYSTEM.md)
 │   │   │   ├── lib/api/               # client.ts (base URL, token, timeout, error mapping)
 │   │   │   ├── lib/storage/           # repository.ts, sqlite.ts, migrations.ts, files.ts, export.ts
 │   │   │   ├── lib/auth/              # google.ts (configure, signIn, signOut), session.ts (secure store), devLogin.ts (__DEV__ only)

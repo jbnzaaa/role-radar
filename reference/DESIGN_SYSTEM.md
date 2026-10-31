@@ -1,10 +1,10 @@
 # Design System — RoleRadar (Expo)
 
-Source of truth for visuals: the **Figma file** (variables, text styles, components). Source of truth for code: `apps/mobile/src/theme/` and `apps/mobile/src/components/ui/`. **Token names are identical in both.**
+Source of truth for visuals: **this doc** (tokens, type, components) plus [SCREENS.md](./SCREENS.md) for each screen's layout and content. There is no Figma file — design is done directly in code (§9). Source of truth for code: `apps/mobile/src/theme/` and `apps/mobile/src/components/ui/`. **Token names here and in `tokens.ts` are identical.**
 
-The low-fidelity screens are a **reference only**. Colours, type scale, spacing, layout values and the component list below are a **starting proposal** drawn from that reference — decide the real values in Figma, then update this doc so code and Figma match. Not optional: the accessibility rules (§8) and the mobile rules in CLAUDE.md §3.
+Colours, type scale, spacing, layout values and the component list below are **final** (decided 2026-10-31). To change a value, update this doc and `tokens.ts` in the same change. Not optional: the accessibility rules (§8) and the mobile rules in CLAUDE.md §3.
 
-**Units:** React Native uses density-independent units — **pt** on iOS, **dp** on Android. Figma px at 1x = pt/dp. All numbers here are in those units.
+**Units:** React Native uses density-independent units — **pt** on iOS, **dp** on Android. All numbers here are in those units.
 
 **Principles**
 1. **One glance, one answer.** Each card answers one question; the big number comes first.
@@ -22,10 +22,10 @@ The low-fidelity screens are a **reference only**. Colours, type scale, spacing,
 | Primitive | `neutral[100]`, `accent[600]` | Semantic tokens only |
 | Semantic | `color.surfaceCard`, `color.verdictStrong` | Components |
 
-Figma: collections `Primitives` (1 mode) and `Semantic` (modes `Light`, `Dark` — dark after MVP).
+Semantic tokens get a `Dark` set after MVP.
 
 ```ts
-// apps/mobile/src/theme/tokens.ts  (generated from Figma variables — don't hand-edit values)
+// apps/mobile/src/theme/tokens.ts  (values from §2–4 of this doc — keep them in sync)
 export const primitives = { neutral: { 0: "#FFFFFF", 50: "#FAFAFA", /* … */ }, accent: { /* … */ } } as const;
 export const color = {
   bgPage: primitives.neutral[50],
@@ -41,7 +41,7 @@ Components use `useTheme()` → `{ color, space, radius, text }` so dark mode la
 
 ---
 
-## 2. Colour (proposal)
+## 2. Colour
 
 ### 2.1 Primitives
 | Neutral | Hex | | Accent / status | Hex |
@@ -80,9 +80,9 @@ Components use `useTheme()` → `{ color, space, radius, text }` so dark mode la
 
 ---
 
-## 3. Typography (proposal)
+## 3. Typography
 
-Fonts loaded with `expo-font` (e.g. `@expo-google-fonts/inter` for body; the display face chosen in Figma). Numbers use `fontVariant: ['tabular-nums']`.
+Font: **Inter** for body and display, loaded with `expo-font` via `@expo-google-fonts/inter`. Numbers use `fontVariant: ['tabular-nums']`.
 
 | Token | Size / line height | Weight | Use (as in the reference) |
 |---|---|---|---|
@@ -109,7 +109,7 @@ Fonts loaded with `expo-font` (e.g. `@expo-google-fonts/inter` for body; the dis
 **Radius:** `sm` 8 · `md` 12 · `lg` 20 (cards) · `full` (buttons, chips, back button, tab pill)
 **Elevation:** cards flat on `bgPage`. Tab bar and sheets: iOS `shadowColor/Opacity/Radius`, Android `elevation: 8` — wrap in one `shadow.raised` token.
 
-**Layout (proposal, from the reference)**
+**Layout**
 | Element | Value |
 |---|---|
 | Screen side padding | 20 |
@@ -120,7 +120,7 @@ Fonts loaded with `expo-font` (e.g. `@expo-google-fonts/inter` for body; the dis
 | Bottom action bar | full-width pill button, height 52, 20 side padding, above the bottom safe area |
 | Tab bar | 64 + bottom safe area; 4 tabs + 52 centre (+) |
 
-**Screen sizes to check in Figma and on devices:** 375 × 667 (iPhone SE), 390 × 844 (design frame), 440 × 956 (Pro Max), 360 × 800 (small Android).
+**Screen sizes to check on devices/simulators:** 375 × 667 (iPhone SE), 390 × 844 (baseline), 440 × 956 (Pro Max), 360 × 800 (small Android).
 
 ---
 
@@ -134,9 +134,9 @@ Fonts loaded with `expo-font` (e.g. `@expo-google-fonts/inter` for body; the dis
 
 ---
 
-## 6. Components (starting list — add, merge or drop in Figma)
+## 6. Components
 
-Each is a Figma component (with variants) and `apps/mobile/src/components/ui/<Name>.tsx`. **Figma variant properties = React props.**
+Each is `apps/mobile/src/components/ui/<Name>.tsx` with the props below. Adding, merging or dropping a component → update this table in the same change.
 
 | Component | Props / variants | States | Seen in the reference on |
 |---|---|---|---|
@@ -199,25 +199,19 @@ Icons: `lucide-react-native` — tabs `House`, `FileText`, `History`, `CircleUse
 
 ---
 
-## 9. Figma workflow (Claude × Figma MCP)
+## 9. Design workflow (code-first, no Figma)
 
-### 9.1 Setup
-- [ ] Create **"RoleRadar — Mobile"** (Claude loads `figma-create-new-file`).
-- [ ] Pages: `00 Cover`, `01 Foundations`, `02 Components`, `03 Reference` (paste the reference frames), `04 Screens`, `99 Playground`.
+Decided 2026-10-31: no Figma file or Figma MCP. This doc and SCREENS.md are the visual spec; everything is built and reviewed directly in the app.
 
-### 9.2 Build order (Claude loads `figma-use` + `figma-generate-library`)
-| Step | Example prompt |
+### 9.1 Build order
+| Step | What |
 |---|---|
-| 1 | "Create a `Primitives` variable collection with the colours, spacing and radii in DESIGN_SYSTEM.md §2.1 and §4." |
-| 2 | "Create a `Semantic` collection (Light mode) aliasing primitives as in §2.2, using the camelCase names." |
-| 3 | "Create text styles from §3." |
-| 4 | "Build a Foundations page: swatches with token names, type scale, spacing." |
-| 5 | Components smallest first: Chip → IconButton → Button → TabBar → Card → KeyValueRow → StatTile → ScoreBar → StackedBar/LegendRow → Gauge → rows → RequirementRow → CheckList → SearchField → TextArea → StatusPicker sheet → FilePickerCard → FileCard → VersionRow → SettingsRow → ProfileCard → PageHeader → HomeHeader → DotMatrixLoader → Banner → BottomSheet → Toast → EmptyState. |
-| 6 | "Design the Home screen at 390 × 844 in `04 Screens`, using the Home reference frame as a starting point and only components from `02 Components`. Include every required item in SCREENS.md §2." Repeat per screen with empty/loading/error/offline states. |
-| 7 | "Screenshot each screen at 375, 390 and 440 widths and list unbound values, text below 12 and targets below 44." |
+| 1 | `src/theme/tokens.ts`: primitives and semantic colours (§2), `space`, `radius`, `shadow.raised` (§4). |
+| 2 | `src/theme/typography.ts`: text styles from §3; Inter loaded with `expo-font`; `useTheme()`. |
+| 3 | Components smallest first: Chip → IconButton → Button → TabBar → Card → KeyValueRow → StatTile → ScoreBar → StackedBar/LegendRow → Gauge → rows → RequirementRow → CheckList → SearchField → TextArea → StatusPicker sheet → FilePickerCard → FileCard → VersionRow → SettingsRow → ProfileCard → PageHeader → HomeHeader → DotMatrixLoader → Banner → BottomSheet → Toast → EmptyState. |
+| 4 | Dev-only "Components" screen showing every primitive and state, checked on a real phone. |
+| 5 | Screens from SCREENS.md (every required item, notes applied; empty, loading, error, offline states), in the phase that owns each screen. |
 
-Rules: all values bound to variables; auto layout everywhere; component property names = React prop names; frames include the iOS status bar and home indicator areas so safe areas are designed, not discovered.
-
-### 9.3 Figma → code
-- Generate `src/theme/tokens.ts` from Figma variables (`get_variable_defs`) and diff against this doc.
-- Build each `ui/` component from its Figma node (`figma-design-to-code` → `get_design_context`). The output is web-oriented: translate `div`→`View`, text→`Text`, CSS→`StyleSheet` with tokens, flexbox defaults (`flexDirection: 'column'` in RN).
+### 9.2 Checks (on devices/simulators, not mock-ups)
+- Widths 375, 390, 440 and 360 dp Android; largest system text size; safe areas on a notched iPhone and gesture-nav Android.
+- No raw hex, spacing or font-size numbers in components; no text below 12; targets ≥ 44; contrast per §8.

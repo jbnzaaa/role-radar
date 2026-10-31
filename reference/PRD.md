@@ -4,7 +4,7 @@
 |---|---|
 | Owner | Jay (job seeker, designer and developer) |
 | Platform | iOS and Android app built with Expo (React Native), plus a small API on Vercel |
-| Status | Draft v1 — informed by low-fidelity reference screens (Oct 2026); final UI is designed in Figma |
+| Status | Draft v1 — informed by low-fidelity reference screens (Oct 2026); final UI is built in code from SCREENS.md + DESIGN_SYSTEM.md |
 | Last updated | 2026-10-31 |
 
 ---

@@ -33,25 +33,25 @@ Suggested pace (part-time): Phases 0–2 week 1–2 · 3–5 weeks 3–4 · 6–
 
 ---
 
-## Phase 1 — Design system (Figma via MCP → theme)
+## Phase 1 — Design system (code-first → theme)
 
-Follow [DESIGN_SYSTEM.md §9](./DESIGN_SYSTEM.md#9-figma-workflow-claude--figma-mcp).
+Follow [DESIGN_SYSTEM.md §9](./DESIGN_SYSTEM.md#9-design-workflow-code-first-no-figma). No Figma (decided 2026-10-31): DESIGN_SYSTEM.md §2–4 are final; SCREENS.md is the main layout reference.
 
-### 1A. Figma
-- [ ] **P1-01 (P0)** Create "RoleRadar — Mobile"; pages; paste the reference frames into `03 Reference`.
-- [ ] **P1-02 (P0)** Decide final palette, fonts, type scale and spacing (DESIGN_SYSTEM.md §2–4 are proposals); update the doc.
-- [ ] **P1-03 (P0)** Variables (Primitives + Semantic) and text styles.
-- [ ] **P1-04 (P0)** Components (§6 order), all states.
-- [ ] **P1-05 (P0)** Final screens at 390 × 844 for every screen in SCREENS.md — every **required** item present, **notes on the reference** applied; empty, loading, error, offline states. If a final screen adds/drops content, update SCREENS.md.
-- [ ] **P1-06 (P0)** Check at 375, 390, 440 widths; contrast; no text < 12; targets ≥ 44.
+### 1A. Decisions and assets
+- [x] **P1-01 (P0)** ~~Create the Figma file~~ — dropped: design is done directly in code.
+- [x] **P1-02 (P0)** Final palette, fonts, type scale and spacing = DESIGN_SYSTEM.md §2–4 (font: Inter for body and display).
+- [x] **P1-03 (P0)** ~~Figma variables and text styles~~ — dropped (→ P1-08).
+- [x] **P1-04 (P0)** ~~Figma components~~ — dropped (→ P1-09).
+- [x] **P1-05 (P0)** ~~Final Figma screens~~ — dropped: each screen is built from SCREENS.md in its own phase (every **required** item, notes applied; empty, loading, error, offline states; if a screen adds/drops content, update SCREENS.md).
 - [ ] **P1-07 (P0)** App icon (1024 px), Android adaptive icon (foreground + background), splash screen.
 
 ### 1B. Code
-- [ ] **P1-08 (P0)** `src/theme/tokens.ts` + `typography.ts` from Figma variables; `useTheme()`; fonts via `expo-font`.
-- [ ] **P1-09 (P0)** `ui/` primitives, one commit each, matching Figma (`react-native-svg` for Gauge/bars, `lucide-react-native` icons).
+- [ ] **P1-08 (P0)** `src/theme/tokens.ts` + `typography.ts` from DESIGN_SYSTEM.md §2–4; `useTheme()`; Inter via `expo-font`.
+- [ ] **P1-09 (P0)** `ui/` primitives, one commit each, matching DESIGN_SYSTEM.md §6 (`react-native-svg` for Gauge/bars, `lucide-react-native` icons).
 - [ ] **P1-10 (P1)** A dev-only "Components" screen showing every primitive and state, to check on a real phone.
+- [ ] **P1-06 (P0)** On the Components screen: check at 375, 390, 440 widths and 360 dp Android; contrast; no text < 12; targets ≥ 44; largest text size.
 
-**Exit:** primitives match Figma on a real phone; no raw hex/number styles in components (`grep -rnE "#[0-9a-fA-F]{3,6}" apps/mobile/src/components` returns nothing).
+**Exit:** primitives match DESIGN_SYSTEM.md on a real phone; no raw hex/number styles in components (`grep -rnE "#[0-9a-fA-F]{3,6}" apps/mobile/src/components` returns nothing).
 
 ---
 
@@ -192,3 +192,4 @@ Follow [DESIGN_SYSTEM.md §9](./DESIGN_SYSTEM.md#9-figma-workflow-claude--figma-
 | 2026-10-31 | P0-07 | Mobile: `jest-expo` preset + `@testing-library/react-native` 14 (`types: ["jest"]` in tsconfig, needed with TS 6); api + core: Vitest 5 (`vitest.config.mts`, api resolves `@/`); one smoke test per workspace importing `@roleradar/core` |
 | 2026-10-31 | P0-08 | `app.json`: name RoleRadar, slug `roleradar`, scheme `roleradar`, `ios.bundleIdentifier` + `android.package` = `com.jbnzaaa.roleradar`, portrait, `userInterfaceStyle: "light"` |
 | 2026-10-31 | P0-09 | Pushed to github.com/jbnzaaa/role-radar; `GET /api/health` added; Vercel project (root `apps/api`) live, health OK (fixed missing `@roleradar/core` dependency); `eas init` → `@obitooooobi/roleradar` (projectId in `app.json`). Phase 0 exit criteria met |
+| 2026-10-31 | P1-01–P1-05 | No Figma: design is code-first. DESIGN_SYSTEM.md §2–4 marked final (font Inter), SCREENS.md is the main layout reference; Figma steps dropped from CLAUDE.md, DESIGN_SYSTEM.md §9, SCREENS, PRD, README, ARCHITECTURE; P1-06 moved after the Components screen |

@@ -13,7 +13,7 @@ RoleRadar is an **Expo (React Native) app** for iOS and Android in a monorepo:
 2. Read what the task depends on:
    - Behaviour and acceptance criteria → [PRD.md](./PRD.md)
    - The screen's required content, data, states and actions → [SCREENS.md](./SCREENS.md)
-   - The screen's **layout and visuals** → the final Figma frame (not the reference screens). No final frame yet → ask before building the UI.
+   - The screen's **layout and visuals** → SCREENS.md (layout, content) + DESIGN_SYSTEM.md (tokens, components). No Figma. Layout unclear → ask before building the UI.
    - Navigation, storage, API, builds → [ARCHITECTURE.md](./ARCHITECTURE.md)
    - Tokens and components → [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)
    - Prompt, schema, scoring → [AI_MATCHING.md](./AI_MATCHING.md)
@@ -50,7 +50,7 @@ RoleRadar is an **Expo (React Native) app** for iOS and Android in a monorepo:
 - TypeScript `strict`, no `any`. Zod schemas in `packages/core` are the source of truth; types via `z.infer`. App and API import from `@roleradar/core`.
 - Styling: `StyleSheet.create` + theme tokens from `apps/mobile/src/theme`. **Never** a raw hex, number spacing or font size in a component — use `theme.color.*`, `theme.space.*`, `theme.text.*`.
 - No styling libraries (NativeWind, styled-components, etc.) unless agreed.
-- UI primitives in `apps/mobile/src/components/ui/` mirror Figma components one-to-one (same names, same variant props).
+- UI primitives in `apps/mobile/src/components/ui/` match DESIGN_SYSTEM.md §6 one-to-one (same names, same props).
 - Data access only through `apps/mobile/src/lib/storage/repository.ts`. Screens never touch SQLite or the file system directly.
 - Server calls only through `apps/mobile/src/lib/api/client.ts` (adds the auth token, timeouts, error mapping).
 - Business logic in `packages/core` or `src/lib/`, never inside screen components.
@@ -77,12 +77,11 @@ RoleRadar is an **Expo (React Native) app** for iOS and Android in a monorepo:
 - After a prompt/schema/scoring change, run `npm run eval` and log the result.
 - `MOCK_GEMINI=true` on the API for UI work and tests.
 
-## 7. Figma workflow
+## 7. Design workflow (code-first, no Figma)
 
-Screens and components live in Figma (DESIGN_SYSTEM.md §9).
-- **Figma → code:** load `figma-design-to-code` before `get_design_context`. Its output is web-flavoured — translate it to React Native components, `StyleSheet` and our tokens; never paste CSS.
-- **Building in Figma:** load `figma-use` (+ `figma-generate-library`) before `use_figma`.
-- Token names in Figma variables and `src/theme/tokens.ts` match exactly.
+There is no Figma file and no Figma MCP. Components and screens are built directly in code (DESIGN_SYSTEM.md §9).
+- Token values come from DESIGN_SYSTEM.md §2–4; token names there and in `src/theme/tokens.ts` match exactly.
+- Screen layout and content come from SCREENS.md; check each screen on a real phone (§2).
 - A value that isn't a token → ask before adding one.
 
 ## 8. Git
