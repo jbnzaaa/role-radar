@@ -1,3 +1,7 @@
 node_modules/
 .DS_Store
 *.log
+
+# env files (only .env.example is committed)
+.env*
+!.env.example
