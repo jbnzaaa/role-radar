@@ -1,8 +1,10 @@
 import * as Device from "expo-device";
 import { Platform, StyleSheet, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { router } from "expo-router";
 
 import { AnimatedIcon } from "@/components/animated-icon";
+import { Button } from "@/components/ui/Button";
 import { HintRow } from "@/components/hint-row";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
@@ -60,6 +62,15 @@ export default function HomeScreen() {
             hint={<ThemedText type="code">npm run reset-project</ThemedText>}
           />
         </ThemedView>
+
+        {__DEV__ && (
+          <Button
+            label="Components (dev)"
+            variant="secondary"
+            size="md"
+            onPress={() => router.push("/dev-components")}
+          />
+        )}
 
         {Platform.OS === "web" && <WebBadge />}
       </SafeAreaView>
