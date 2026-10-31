@@ -65,6 +65,8 @@ export const size = {
   gaugeMd: 160,
   textAreaMin: 160,
   textAreaMax: 320,
+  avatarSm: 40,
+  avatarLg: 64,
 } as const;
 
 export const opacity = {
