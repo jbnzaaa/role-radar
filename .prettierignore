@@ -1,0 +1,8 @@
+node_modules
+package-lock.json
+reference
+**/.next
+**/.expo
+**/dist
+**/next-env.d.ts
+**/expo-env.d.ts

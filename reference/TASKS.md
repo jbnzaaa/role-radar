@@ -22,7 +22,7 @@ Suggested pace (part-time): Phases 0–2 week 1–2 · 3–5 weeks 3–4 · 6–
 - [x] **P0-01 (P0)** Create the monorepo (README → Setup): root `package.json` with `"workspaces": ["apps/*", "packages/*"]`; `apps/mobile` via `create-expo-app` (default Expo Router + TypeScript template); `apps/api` via `create-next-app` (no Tailwind); `packages/core` named `@roleradar/core`.
 - [x] **P0-02 (P0)** Copy the 9 docs into `reference/` (root `CLAUDE.md` points there); commit.
 - [x] **P0-03 (P0)** Make Metro resolve the workspace package (check Expo's monorepo guide for your SDK; recent SDKs detect workspaces automatically). *Done when:* the app imports a constant from `@roleradar/core` and runs in Expo Go.
-- [ ] **P0-04 (P0)** TypeScript `strict` everywhere; shared base `tsconfig`; ESLint + Prettier.
+- [x] **P0-04 (P0)** TypeScript `strict` everywhere; shared base `tsconfig`; ESLint + Prettier.
 - [ ] **P0-05 (P0)** Root scripts: `dev:api` (`next dev -H 0.0.0.0 -p 3001`), `dev:mobile` (`expo start`), `typecheck`, `lint`, `test`, `e2e`, `eval`, `check`.
 - [ ] **P0-06 (P0)** Env files: `apps/api/.env.local` (secrets), `apps/mobile/.env` (`EXPO_PUBLIC_API_URL` only); both git-ignored; `.env.example` for each.
 - [ ] **P0-07 (P0)** Testing setup: `jest-expo` + `@testing-library/react-native` in mobile; Vitest in api and core.
@@ -186,3 +186,4 @@ Follow [DESIGN_SYSTEM.md §9](./DESIGN_SYSTEM.md#9-figma-workflow-claude--figma-
 | 2026-10-31 | P0-01 | Monorepo created: root npm workspaces, `apps/mobile` (create-expo-app, SDK 58, Expo Router + TS), `apps/api` (create-next-app 16.4, TS, ESLint, no Tailwind, src/, App Router), `packages/core` (`@roleradar/core`); `git init` (no commit yet) |
 | 2026-10-31 | P0-02 | 9 docs moved to `reference/` (dropped " (1)" from file names, `AI_MATCHING.md` extracted from the zip); root `CLAUDE.md` points to `reference/CLAUDE.md`; first commits |
 | 2026-10-31 | P0-03 | `APP_NAME` exported from `@roleradar/core`, shown on the mobile home screen; Metro (SDK 58) resolves the workspace with no `metro.config.js`; checked in Expo Go on a phone |
+| 2026-10-31 | P0-04 | Root `tsconfig.base.json` (strict + safety flags) extended by mobile, api, core; ESLint flat configs (eslint-config-expo, eslint-config-next, typescript-eslint strict) + `eslint-config-prettier`, `no-explicit-any` as error; root Prettier (`printWidth` 100), code formatted; fixed 2 Expo template errors in web-only files |
