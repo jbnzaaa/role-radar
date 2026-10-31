@@ -5,3 +5,6 @@ node_modules/
 # env files (only .env.example is committed)
 .env*
 !.env.example
+
+# Claude Code personal settings
+.claude/settings.local.json
