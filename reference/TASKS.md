@@ -25,7 +25,7 @@ Suggested pace (part-time): Phases 0–2 week 1–2 · 3–5 weeks 3–4 · 6–
 - [x] **P0-04 (P0)** TypeScript `strict` everywhere; shared base `tsconfig`; ESLint + Prettier.
 - [x] **P0-05 (P0)** Root scripts: `dev:api` (`next dev -H 0.0.0.0 -p 3001`), `dev:mobile` (`expo start`), `typecheck`, `lint`, `test`, `e2e`, `eval`, `check`.
 - [x] **P0-06 (P0)** Env files: `apps/api/.env.local` (secrets), `apps/mobile/.env` (`EXPO_PUBLIC_API_URL` only); both git-ignored; `.env.example` for each.
-- [ ] **P0-07 (P0)** Testing setup: `jest-expo` + `@testing-library/react-native` in mobile; Vitest in api and core.
+- [x] **P0-07 (P0)** Testing setup: `jest-expo` + `@testing-library/react-native` in mobile; Vitest in api and core.
 - [ ] **P0-08 (P0)** `app.json`: name "RoleRadar", slug, `scheme: "roleradar"`, `ios.bundleIdentifier` and `android.package` (`com.<you>.roleradar`), portrait only, `userInterfaceStyle: "light"` (dark later).
 - [ ] **P0-09 (P0)** GitHub repo + first push; connect `apps/api` to Vercel (root directory `apps/api`); `eas init` for the mobile app.
 
@@ -189,3 +189,4 @@ Follow [DESIGN_SYSTEM.md §9](./DESIGN_SYSTEM.md#9-figma-workflow-claude--figma-
 | 2026-10-31 | P0-04 | Root `tsconfig.base.json` (strict + safety flags) extended by mobile, api, core; ESLint flat configs (eslint-config-expo, eslint-config-next, typescript-eslint strict) + `eslint-config-prettier`, `no-explicit-any` as error; root Prettier (`printWidth` 100), code formatted; fixed 2 Expo template errors in web-only files |
 | 2026-10-31 | P0-05 | Root scripts `dev:api`, `dev:mobile`, `typecheck`, `lint`, `format`, `format:check`, `test`, `e2e`, `eval`, `check` (runs workspace scripts with `--if-present`); `check` also runs `format:check` (README updated); `test` has no runners until P0-07, `e2e` needs the Maestro CLI, `eval` needs `eval/run-eval.ts` (P10-01) |
 | 2026-10-31 | P0-06 | `apps/api/.env.local` (random `TOKEN_SECRET`, other secrets empty) and `apps/mobile/.env` (`EXPO_PUBLIC_API_URL` = LAN IP); `.env*` ignored in root, api and mobile with `!.env.example`; `.env.example` committed for each |
+| 2026-10-31 | P0-07 | Mobile: `jest-expo` preset + `@testing-library/react-native` 14 (`types: ["jest"]` in tsconfig, needed with TS 6); api + core: Vitest 5 (`vitest.config.mts`, api resolves `@/`); one smoke test per workspace importing `@roleradar/core` |
