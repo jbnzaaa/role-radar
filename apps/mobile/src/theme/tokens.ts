@@ -63,6 +63,8 @@ export const size = {
   bar: 8,
   gaugeLg: 220,
   gaugeMd: 160,
+  textAreaMin: 160,
+  textAreaMax: 320,
 } as const;
 
 export const opacity = {
