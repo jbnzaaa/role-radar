@@ -128,7 +128,9 @@ EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID=yyyy.apps.googleusercontent.com
 | `npm run test` | Jest (mobile) + Vitest (api, core) |
 | `npm run e2e` | Maestro flows against a running app (`MOCK_GEMINI=true` on the API) |
 | `npm run eval` | AI accuracy evaluation (real Gemini quota) |
-| `npm run check` | typecheck + lint + test — before every commit |
+| `npm run format` | Prettier: format all code (`reference/` docs excluded) |
+| `npm run format:check` | Prettier: check formatting only |
+| `npm run check` | typecheck + lint + format:check + test — before every commit |
 
 Builds:
 | Command | Result |
