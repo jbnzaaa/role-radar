@@ -47,7 +47,7 @@ Follow [DESIGN_SYSTEM.md §9](./DESIGN_SYSTEM.md#9-design-workflow-code-first-no
 
 ### 1B. Code
 - [x] **P1-08 (P0)** `src/theme/tokens.ts` + `typography.ts` from DESIGN_SYSTEM.md §2–4; `useTheme()`; Inter via `expo-font`.
-- [ ] **P1-09 (P0)** `ui/` primitives, one commit each, matching DESIGN_SYSTEM.md §6 (`react-native-svg` for Gauge/bars, `lucide-react-native` icons).
+- [x] **P1-09 (P0)** `ui/` primitives, one commit each, matching DESIGN_SYSTEM.md §6 (`react-native-svg` for Gauge/bars, `lucide-react-native` icons).
 - [ ] **P1-10 (P1)** A dev-only "Components" screen showing every primitive and state, to check on a real phone.
 - [ ] **P1-06 (P0)** On the Components screen: check at 375, 390, 440 widths and 360 dp Android; contrast; no text < 12; targets ≥ 44; largest text size.
 
@@ -194,3 +194,4 @@ Follow [DESIGN_SYSTEM.md §9](./DESIGN_SYSTEM.md#9-design-workflow-code-first-no
 | 2026-10-31 | P0-09 | Pushed to github.com/jbnzaaa/role-radar; `GET /api/health` added; Vercel project (root `apps/api`) live, health OK (fixed missing `@roleradar/core` dependency); `eas init` → `@obitooooobi/roleradar` (projectId in `app.json`). Phase 0 exit criteria met |
 | 2026-10-31 | P1-01–P1-05 | No Figma: design is code-first. DESIGN_SYSTEM.md §2–4 marked final (font Inter), SCREENS.md is the main layout reference; Figma steps dropped from CLAUDE.md, DESIGN_SYSTEM.md §9, SCREENS, PRD, README, ARCHITECTURE; P1-06 moved after the Components screen |
 | 2026-10-31 | P1-08 | `src/theme/` tokens (colour, space, radius, size, layout, shadow, motion), typography (Inter 400/500/600/700, per-weight imports), `useTheme()`; fonts loaded in root layout behind the splash; contrast + type-size tests; DESIGN_SYSTEM.md lists the new token names. P1-07 (icon/splash) waits for artwork |
+| 2026-10-31 | P1-09 | All 30 `ui/` primitives from DESIGN_SYSTEM.md §6, one commit each (PageHeader landed inside the HomeHeader commit `bfb853f`), 77 mobile tests; deps `react-native-svg`, `lucide-react-native`, `expo-haptics`, `@expo-google-fonts/roboto` (Google button label); new tokens listed in DESIGN_SYSTEM.md §2, §3, §4; Jest: lucide CJS mapping + minimal Reanimated mock. Open: Gauge marker animation (with its first screen), Android StatusPicker sheet checked on a phone in P1-10 |
