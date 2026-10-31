@@ -1,7 +1,7 @@
 // Reanimated 4 needs the native worklets runtime, and its shipped mock still loads native-only
 // internals in Jest. Minimal stand-in for the APIs we use: animations resolve to their end value.
 jest.mock("react-native-reanimated", () => {
-  const { View } = require("react-native");
+  const { View } = jest.requireActual<typeof import("react-native")>("react-native");
   const passthrough = <T>(v: T) => v;
   return {
     __esModule: true,
@@ -14,5 +14,8 @@ jest.mock("react-native-reanimated", () => {
     withRepeat: passthrough,
     withSequence: (...steps: unknown[]) => steps[0],
     cancelAnimation: () => undefined,
+    // Layout animations: builders whose modifiers return themselves.
+    FadeInDown: { duration: () => ({}) },
+    FadeOutDown: { duration: () => ({}) },
   };
 });
