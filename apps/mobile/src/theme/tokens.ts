@@ -70,6 +70,8 @@ export const size = {
 export const opacity = {
   /** Gauge bands are verdict colours at reduced strength (DESIGN_SYSTEM.md §2.2). */
   band: 0.3,
+  /** Dimmed page behind sheets and dialogs. */
+  backdrop: 0.4,
 } as const;
 
 // Named layout spacing from DESIGN_SYSTEM.md §4 → Layout.
