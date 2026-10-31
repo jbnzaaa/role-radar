@@ -109,7 +109,7 @@ Font: **Inter** for body and display, loaded with `expo-font` via `@expo-google-
 **Radius:** `sm` 8 · `md` 12 · `lg` 20 (cards) · `full` (buttons, chips, back button, tab pill)
 **Elevation:** cards flat on `bgPage`. Tab bar and sheets use `shadow.raised`: iOS `shadowColor` neutral.900, `shadowOpacity` 0.08, `shadowRadius` 12, `shadowOffset` 0 / −2; Android `elevation: 8`.
 
-**Tokens for the layout values below:** `layout.screenPadding` (20), `layout.cardGap` (8), `layout.cardPadding` (16), `layout.titleBlockGap` (24); `size.minTarget` (44), `size.buttonLg` (52), `size.buttonMd` (44), `size.backButton` (40), `size.tabBar` (64), `size.addButton` (52); `size.icon` (24, Lucide default), `size.iconSm` (16, inline/chips), `size.bar` (8, ScoreBar/StackedBar height).
+**Tokens for the layout values below:** `layout.screenPadding` (20), `layout.cardGap` (8), `layout.cardPadding` (16), `layout.titleBlockGap` (24); `size.minTarget` (44), `size.buttonLg` (52), `size.buttonMd` (44), `size.backButton` (40), `size.tabBar` (64), `size.addButton` (52); `size.icon` (24, Lucide default), `size.iconSm` (16, inline/chips), `size.bar` (8, ScoreBar/StackedBar height), `size.gaugeLg` (220), `size.gaugeMd` (160); `opacity.band` (0.3, Gauge bands).
 
 **Layout**
 | Element | Value |

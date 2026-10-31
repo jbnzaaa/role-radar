@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo } from "react";
 
-import { color, layout, motion, radius, shadow, size, space } from "./tokens";
+import { color, layout, motion, opacity, radius, shadow, size, space } from "./tokens";
 import { text } from "./typography";
 
 export type Theme = {
@@ -11,10 +11,21 @@ export type Theme = {
   layout: typeof layout;
   shadow: typeof shadow;
   motion: typeof motion;
+  opacity: typeof opacity;
   text: typeof text;
 };
 
-export const lightTheme: Theme = { color, space, radius, size, layout, shadow, motion, text };
+export const lightTheme: Theme = {
+  color,
+  space,
+  radius,
+  size,
+  layout,
+  shadow,
+  motion,
+  opacity,
+  text,
+};
 
 // Light only for now; dark mode later swaps the value here, not the components.
 const ThemeContext = createContext<Theme>(lightTheme);

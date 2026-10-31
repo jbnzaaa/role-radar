@@ -61,6 +61,13 @@ export const size = {
   icon: 24,
   iconSm: 16,
   bar: 8,
+  gaugeLg: 220,
+  gaugeMd: 160,
+} as const;
+
+export const opacity = {
+  /** Gauge bands are verdict colours at reduced strength (DESIGN_SYSTEM.md §2.2). */
+  band: 0.3,
 } as const;
 
 // Named layout spacing from DESIGN_SYSTEM.md §4 → Layout.
