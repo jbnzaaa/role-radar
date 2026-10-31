@@ -45,6 +45,14 @@ export default function HomeScreen() {
           >
             {APP_NAME}
           </Text>
+          {__DEV__ && (
+            <Button
+              label="Components (dev)"
+              variant="secondary"
+              size="md"
+              onPress={() => router.push("/dev-components")}
+            />
+          )}
         </ThemedView>
 
         <ThemedText type="code" style={styles.code}>
@@ -62,15 +70,6 @@ export default function HomeScreen() {
             hint={<ThemedText type="code">npm run reset-project</ThemedText>}
           />
         </ThemedView>
-
-        {__DEV__ && (
-          <Button
-            label="Components (dev)"
-            variant="secondary"
-            size="md"
-            onPress={() => router.push("/dev-components")}
-          />
-        )}
 
         {Platform.OS === "web" && <WebBadge />}
       </SafeAreaView>
